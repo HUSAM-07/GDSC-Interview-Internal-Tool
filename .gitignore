@@ -1,0 +1,11 @@
+
+
+# Ignore credentials
+credentials/
+
+# Ignore virtual environment directories
+venv/
+
+
+# Ignore Streamlit files
+.streamlit/
