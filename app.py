@@ -29,7 +29,8 @@ def bulk_update_status(start_row, end_row, status):
         update_status(i, status)
 
 # Streamlit UI
-st.title("Recruitment Applications Management")
+st.title("Google DSC's Internal Tool for Recruitment Applications Management")
+st.warning("This tool is made for GDSC's Internal Teams; Not Made for Public Access")
 
 # Sidebar for filtering and bulk updates
 with st.sidebar:
