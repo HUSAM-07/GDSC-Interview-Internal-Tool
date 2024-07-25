@@ -3,11 +3,26 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import altair as alt
+from dotenv import load_dotenv
+import os
+import json
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Retrieve the JSON string from environment variables
+creds_json_str = os.getenv('GOOGLE_SHEETS_API_CREDENTIALS_JSON')
+
+if creds_json_str is None:
+    st.error("Google Sheets API credentials not found in environment variables.")
+    st.stop()
+
+# Parse the JSON string into a dictionary
+creds_json = json.loads(creds_json_str)
 
 # Google Sheets API setup
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds_path = "credentials/google_sheets_credentials.json"  # Path to your credentials JSON file
-creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
 client = gspread.authorize(creds)
 
 # Connect to Google Sheet

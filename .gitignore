@@ -4,6 +4,7 @@ credentials/google_sheets_credentials.json
 # Ignore virtual environment directories
 venv/
 
+.env
 
 # Ignore Streamlit files
 .streamlit/
